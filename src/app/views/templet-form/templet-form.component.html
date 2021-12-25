@@ -1,0 +1,71 @@
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)">
+  <div class="mb-3">
+    <label for="username" class="form-label">user name</label>
+    <input
+      type="text"
+      for="username"
+      name="userName"
+      ngModel
+      #userName="ngModel"
+      required
+      minlength="5"
+      placeholder="Enter your user name"
+      type="text"
+      class="form-control"
+      id="username"
+    />
+    <div
+      class="error d-flex justify-content-center"
+      *ngIf="userName.touched && userName.invalid"
+    >
+      <div *ngIf="userName.errors?.['required']">* user name is requierd *</div>
+      <div *ngIf="userName.errors?.['minlength']">
+        *FirstName minlength is
+        {{userName.errors?.['minlength'].requiredLength}}... you have entered
+        {{userName.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      ngModel
+      name="email"
+      #email="ngModel"
+      aria-describedby="emailHelp"
+      required
+      email
+    />
+    <div
+      class="error d-flex justify-content-center"
+      *ngIf="email.touched && email.invalid"
+    >
+      <div *ngIf="email.errors?.['required']">* email is required*</div>
+      <div *ngIf="email.errors?.['email']">* email is invaild*</div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="contactForm.invalid"
+  >
+    submit form button
+  </button>
+
+  <hr />
+  <br />
+  <br />
+  <br />
+  <br />
+  <a class="" routerLink="/users">
+    <button type="submit" class="btn btn-primary">
+      click here to go to users
+    </button></a
+  >
+</form>

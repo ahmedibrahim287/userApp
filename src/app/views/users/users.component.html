@@ -1,0 +1,14 @@
+<div class="sttttt">
+  <div class="card col-3 ms-4 me-4 mb-4 mt-4" *ngFor="let item of users">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.username }}</h5>
+      <p class="card-text">{{ item.company.name }}</p>
+      <p class="card-text">{{ item.address.city }}</p>
+      <p class="card-text">{{ item.address.geo.lat }}</p>
+      <p class="card-text">{{ item.address.geo.lng }}</p>
+      <a routerLink="/single-user/{{ item.id }}" class="btn btn-primary"
+        >more info</a
+      >
+    </div>
+  </div>
+</div>
