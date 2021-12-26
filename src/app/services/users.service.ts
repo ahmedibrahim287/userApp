@@ -19,6 +19,16 @@ export class UsersService {
   }
 
 
+  addUser(user: Users) {
+        return this.http.post(this.url,user)
+  }
 
+  deleteUser(id:string) {
+          return this.http.delete(this.url+id)
+  }
+  
+  editUser(id:string,body:Users) {
+    return this.http.patch(this.url+id,body)
+  }
 
 }

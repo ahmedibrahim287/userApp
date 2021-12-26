@@ -1,14 +1,100 @@
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)">
+  <div class="mb-3">
+    <label for="username" class="form-label">user name</label>
+    <input
+      type="text"
+      for="username"
+      name="username"
+      ngModel
+      #userName="ngModel"
+      required
+      minlength="5"
+      placeholder="Enter your user name"
+      type="text"
+      class="form-control"
+      id="username"
+    />
+    <div
+      class="error d-flex justify-content-center"
+      *ngIf="userName.touched && userName.invalid"
+    >
+      <div *ngIf="userName.errors?.['required']">* user name is requierd *</div>
+      <div *ngIf="userName.errors?.['minlength']">
+        *FirstName minlength is
+        {{userName.errors?.['minlength'].requiredLength}}... you have entered
+        {{userName.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      ngModel
+      name="email"
+      #email="ngModel"
+      aria-describedby="emailHelp"
+      required
+      email
+    />
+    <div
+      class="error d-flex justify-content-center"
+      *ngIf="email.touched && email.invalid"
+    >
+      <div *ngIf="email.errors?.['required']">* email is required*</div>
+      <div *ngIf="email.errors?.['email']">* email is invaild*</div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="contactForm.invalid"
+  >
+    submit form button
+  </button>
+</form>
+
 <div class="sttttt">
-  <div class="card col-3 ms-4 me-4 mb-4 mt-4" *ngFor="let item of users">
+  <div
+    class="card col-3 ms-4 me-4 mb-4 mt-4"
+    *ngFor="let item of users; let i = index"
+  >
     <div class="card-body">
       <h5 class="card-title">{{ item.username }}</h5>
-      <p class="card-text">{{ item.company.name }}</p>
-      <p class="card-text">{{ item.address.city }}</p>
-      <p class="card-text">{{ item.address.geo.lat }}</p>
-      <p class="card-text">{{ item.address.geo.lng }}</p>
-      <a routerLink="/single-user/{{ item.id }}" class="btn btn-primary"
-        >more info</a
-      >
+      <h5 class="card-title">{{ item.email }}</h5>
+      <p class="card-text">{{ item.company?.name }}</p>
+      <p class="card-text">{{ item.address?.city }}</p>
+      <p class="card-text">{{ item.address?.geo.lat }}</p>
+      <p class="card-text">{{ item.address?.geo.lng }}</p>
+
+      <!-- single user -->
+      <div class="d-flex flex-wrap justify-content-around">
+        <a
+          routerLink="/single-user/{{ item.id }}"
+          class="btn btn-primary me-2 mt-sm-2"
+          >more info</a
+        >
+        <a (click)="deleteUser(item.id, i)" class="btn btn-danger me-2 mt-sm-2"
+          >delete</a
+        >
+        <a
+          routerLink="/edit-user/{{ item.id }}"
+          class="btn btn-success me-2 mt-sm-2"
+          >edit</a
+        >
+      </div>
     </div>
   </div>
 </div>
+
+<!-- post : 
+user name 
+email 
+-----
+edit : 
+company username -->

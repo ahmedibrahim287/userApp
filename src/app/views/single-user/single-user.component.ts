@@ -23,6 +23,8 @@ user:Users={}
       }
     })
   }
+
+  
   ngOnInit(): void {
     this.getSingleUser()
   }

@@ -3,19 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TempletFormComponent } from './views/templet-form/templet-form.component';
 import { UsersComponent } from './views/users/users.component';
 import { SingleUserComponent } from './views/single-user/single-user.component';
 import { UsersService } from './services/users.service';
 import { FormsModule } from '@angular/forms';
+import { EdituserComponent } from './views/edituser/edituser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TempletFormComponent,
     UsersComponent,
     SingleUserComponent,
-    TempletFormComponent
+    EdituserComponent,
   ],
   imports: [
     BrowserModule,

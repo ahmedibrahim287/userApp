@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TempletFormComponent } from './templet-form.component';
+import { EdituserComponent } from './edituser.component';
 
-describe('TempletFormComponent', () => {
-  let component: TempletFormComponent;
-  let fixture: ComponentFixture<TempletFormComponent>;
+describe('EdituserComponent', () => {
+  let component: EdituserComponent;
+  let fixture: ComponentFixture<EdituserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TempletFormComponent ]
+      declarations: [ EdituserComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TempletFormComponent);
+    fixture = TestBed.createComponent(EdituserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

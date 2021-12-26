@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   
   constructor(private service:UsersService) { }
 
+// get all
   getUsers() {
     this.service.getUsers().subscribe({
       next: (res: any) => {
@@ -24,6 +25,26 @@ export class UsersComponent implements OnInit {
   })
 }
 
+  
+  onSubmit(x: any) {
+    this.service.addUser(x).subscribe({
+      next: () => {
+      this.users.splice(0,0,x)  
+        // console.log(x)
+      }
+    })
+  }
+
+
+  deleteUser(user:any,i:number) {
+    this.service.deleteUser(user).subscribe({
+      next: () => {
+        this.users.splice(i,1)  
+      }
+    })
+  }
+  
+ 
   ngOnInit(): void {
     this.getUsers()
   }
